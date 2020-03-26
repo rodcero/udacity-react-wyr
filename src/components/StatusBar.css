@@ -1,0 +1,23 @@
+.status-bar {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.icon {
+  font-size: 35px;
+  color: #2669bd;
+  border: 2px solid #cccaca;
+  border-radius: 60px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  font-size: 20px;
+  padding: 10px;
+}
