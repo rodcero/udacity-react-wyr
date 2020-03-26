@@ -1,4 +1,4 @@
-import SET_USER from '../actions/user';
+import { SET_USER } from '../actions/user';
 
 export default (state = null, action) => {
   switch (action.type) {

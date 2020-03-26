@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { handleReceiveUsers } from '../actions/users';
+import { setUser } from '../actions/user';
 
 class Login extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class Login extends Component {
       <>
         <h2>Log in</h2>
         {users && (
-          <select>
+          <select onChange={e => this.props.setUser(e.target.value)}>
             <option></option>
             {Object.keys(users).map(user => (
               <option key={user}>{user}</option>
@@ -29,4 +30,4 @@ const mapStateToProps = ({ users }) => {
   return { users };
 };
 
-export default connect(mapStateToProps, { handleReceiveUsers })(Login);
+export default connect(mapStateToProps, { handleReceiveUsers, setUser })(Login);

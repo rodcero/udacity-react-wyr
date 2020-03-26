@@ -12,10 +12,14 @@ class App extends Component {
     return (
       <Fragment>
         <LoadingBar />
-        <Router>
-          <Route path="/" exact component={Login} />
-          <Route path="/questions" exact component={Questions} />
-        </Router>
+        {this.props.user ? (
+          <Router>
+            <Route path="/" exact component={Login} />
+            <Route path="/questions" exact component={Questions} />
+          </Router>
+        ) : (
+          <Login />
+        )}
       </Fragment>
     );
   }
