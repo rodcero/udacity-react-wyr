@@ -8,7 +8,7 @@ export const receiveUsers = users => ({
   users,
 });
 
-export const handleReceiveUser = () => {
+export const handleReceiveUsers = () => {
   return dispatch => {
     dispatch(showLoading());
     return api._getUsers().then(users => {
