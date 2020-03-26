@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { handleReceiveUsers } from '../actions/users';
+
 class Login extends Component {
+  componentDidMount() {
+    this.props.handleReceiveUsers();
+  }
   render() {
     const { users } = this.props;
     return (
@@ -24,4 +29,4 @@ const mapStateToProps = ({ users }) => {
   return { users };
 };
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, { handleReceiveUsers })(Login);
