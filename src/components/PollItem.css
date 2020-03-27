@@ -1,0 +1,16 @@
+.pollitem {
+  color: black;
+  text-decoration: none;
+  border: 2px solid gray;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.pollitem:hover {
+  background-color: lightgray;
+}
+
+.answer {
+  border: 1px solid green;
+}

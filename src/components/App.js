@@ -5,11 +5,20 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 import Login from './Login';
-import Questions from './Questions';
+import NewQuestion from './NewQuestion';
 import StatusBar from './StatusBar';
 import NavBar from './NavBar';
+import PollList from './PollList';
+import Leaderboard from './Leaderboard';
+import { handleReceiveUsers } from '../actions/users';
+import { handleReceiveQuestions } from '../actions/questions';
+import PollDetails from './PollDetails';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.handleReceiveUsers();
+    this.props.handleReceiveQuestions();
+  }
   render() {
     return (
       <Router>
@@ -17,10 +26,12 @@ class App extends Component {
         <StatusBar />
         <NavBar />
         <div className="container">
-          {this.props.user ? (
+          {(this.props.user !== null) & (this.props.questions !== null) ? (
             <>
-              <Route path="/" exact component={Login} />
-              <Route path="/questions" exact component={Questions} />
+              <Route path="/" exact component={PollList} />
+              <Route path="/add" component={NewQuestion} />
+              <Route path="/leaderboard" component={Leaderboard} />
+              <Route path="/questions/:question_id" component={PollDetails} />
             </>
           ) : (
             <Login />
@@ -35,4 +46,7 @@ const mapState = props => {
   return props;
 };
 
-export default connect(mapState)(App);
+export default connect(mapState, {
+  handleReceiveUsers,
+  handleReceiveQuestions,
+})(App);

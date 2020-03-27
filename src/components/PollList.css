@@ -1,0 +1,18 @@
+.category-bar {
+  border-bottom: 1px solid darkblue;
+  height: 33px;
+}
+
+.selected {
+  background-color: lightblue !important;
+}
+
+.category-btn {
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.category-btn:hover {
+  background-color: lightcyan;
+}
