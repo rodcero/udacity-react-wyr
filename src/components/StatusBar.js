@@ -18,7 +18,7 @@ function StatusBar({ user, setUser }) {
           <TiUser className="icon" />
           <div>
             <span className="name">{user.name}</span>
-            <button onClick={signOut}>Sign out</button>
+            <button onClick={signOut}>Logout</button>
           </div>
         </div>
       )}
