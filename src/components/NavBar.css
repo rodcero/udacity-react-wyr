@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   flex-flow: nowrap;
+  padding: 0 20px;
 }
 
 .navbar a {

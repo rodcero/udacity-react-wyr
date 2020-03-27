@@ -16,14 +16,16 @@ class App extends Component {
         <LoadingBar />
         <StatusBar />
         <NavBar />
-        {this.props.user ? (
-          <>
-            <Route path="/" exact component={Login} />
-            <Route path="/questions" exact component={Questions} />
-          </>
-        ) : (
-          <Login />
-        )}
+        <div className="container">
+          {this.props.user ? (
+            <>
+              <Route path="/" exact component={Login} />
+              <Route path="/questions" exact component={Questions} />
+            </>
+          ) : (
+            <Login />
+          )}
+        </div>
       </Router>
     );
   }
