@@ -18,7 +18,12 @@
   align-items: center;
 }
 
+.user div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
 .name {
   font-size: 20px;
-  padding: 10px;
 }
