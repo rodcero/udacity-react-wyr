@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { handleReceiveQuestions } from '../actions/questions';
 
-class Questions extends Component {
+class NewQuestion extends Component {
+  static propTypes = {
+    prop: PropTypes,
+  };
+
   componentDidMount() {
     this.props.handleReceiveQuestions();
   }
@@ -14,13 +20,7 @@ class Questions extends Component {
 
     return (
       <>
-        <h3>Questions</h3>
-        <ul>
-          {Object.keys(questions).map(qk => (
-            <li key={qk}>{questions[qk].optionOne.text}</li>
-          ))}
-        </ul>
-        ;
+        <h3>New Question</h3>
       </>
     );
   }
@@ -28,4 +28,4 @@ class Questions extends Component {
 
 const mapState = ({ questions }) => ({ questions });
 
-export default connect(mapState, { handleReceiveQuestions })(Questions);
+export default connect(mapState, { handleReceiveQuestions })(NewQuestion);
