@@ -6,23 +6,50 @@ export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const ANSWER_QUESTION = 'ANSWER_QUESTION';
 
-export const answerQuestion = (questionId, answer, userId) => ({
+const _addQuestion = question => ({
+  type: ADD_QUESTION,
+  question,
+});
+
+export const addQuestion = data => {
+  return dispatch => {
+    dispatch(showLoading());
+    return api._saveQuestion(data).then(question => {
+      dispatch(_addQuestion(question));
+      dispatch(hideLoading());
+    });
+  };
+};
+
+export const _answerQuestion = (questionId, answer, userId) => ({
   type: ANSWER_QUESTION,
   questionId,
   answer,
   userId,
 });
 
-const receiveQuestion = questions => ({
+export const answerQuestion = (questionId, answer, userId) => {
+  return dispatch => {
+    dispatch(_answerQuestion(questionId, answer, userId));
+    dispatch(showLoading());
+    return api
+      ._saveQuestionAnswer({ authedUser: userId, qid: questionId, answer })
+      .then(() => {
+        dispatch(hideLoading());
+      });
+  };
+};
+
+const _receiveQuestion = questions => ({
   type: RECEIVE_QUESTIONS,
   questions,
 });
 
-export const handleReceiveQuestions = () => {
+export const receiveQuestions = () => {
   return dispatch => {
     dispatch(showLoading());
     return api._getQuestions().then(questions => {
-      dispatch(receiveQuestion(questions));
+      dispatch(_receiveQuestion(questions));
       dispatch(hideLoading());
     });
   };

@@ -11,13 +11,13 @@ import NavBar from './NavBar';
 import PollList from './PollList';
 import Leaderboard from './Leaderboard';
 import { handleReceiveUsers } from '../actions/users';
-import { handleReceiveQuestions } from '../actions/questions';
+import { receiveQuestions } from '../actions/questions';
 import PollDetails from './PollDetails';
 
 class App extends Component {
   componentDidMount() {
     this.props.handleReceiveUsers();
-    this.props.handleReceiveQuestions();
+    this.props.receiveQuestions();
   }
   render() {
     return (
@@ -48,5 +48,5 @@ const mapState = props => {
 
 export default connect(mapState, {
   handleReceiveUsers,
-  handleReceiveQuestions,
+  receiveQuestions,
 })(App);

@@ -36,8 +36,9 @@ class PollDetails extends Component {
               <AnswerQuestion question={question} />
             ) : (
               <>
-                {['optionOne', 'optionTwo'].map(option => (
+                {['optionOne', 'optionTwo'].map((option, key) => (
                   <div
+                    key={key}
                     className="poll-question"
                     style={{ color: answer === option ? 'red' : '' }}
                   >

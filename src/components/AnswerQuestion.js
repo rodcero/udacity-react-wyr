@@ -19,7 +19,7 @@ class AnswerQuestion extends Component {
     this.props.answerQuestion(
       this.props.question.id,
       this.state.selected,
-      this.props.user.id
+      this.props.user
     );
   };
 
