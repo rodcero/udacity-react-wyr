@@ -1,5 +1,13 @@
 .leaderboard-user {
   display: flex;
+  margin: 10px 0;
+  padding: 10px;
+  width: 320px;
+}
+
+.current {
+  border: 2px solid #8df2f2;
+  border-radius: 20px;
 }
 
 .leaderboard-content {
@@ -7,6 +15,20 @@
   flex-direction: row;
 }
 .leaderboard-details {
+  margin: 5px 20px;
+}
+
+.leaderboard-details span {
+  display: inline-block;
+  width: 133px;
+  font-weight: 200;
+}
+
+.leaderboard-details > .name {
+  color: #f280aa;
+}
+
+.leaderboard-details > .detail {
 }
 .leaderboard-score {
   font-weight: bold;

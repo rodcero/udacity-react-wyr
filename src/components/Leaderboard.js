@@ -13,19 +13,28 @@ class Leaderboard extends Component {
   render() {
     return (
       <div>
-        <h3>Leaderboard</h3>
+        <h1>Leaderboard</h1>
         {this.props.users.map(user => (
-          <div key={user.id} className="leaderboard-user">
+          <div
+            key={user.id}
+            className={`leaderboard-user ${
+              this.props.user === user.id ? ' current' : ''
+            }`}
+          >
             <div className="leaderboard-score">
               <span>score</span>
               <div>{user.questionCount + user.answerCount}</div>
             </div>
             <div className="leaderboard-content">
-              <div>Avatar</div>
+              <div className={`avatar ${user.avatarUrl}`}></div>
               <div className="leaderboard-details">
-                <h4>{user.name}</h4>
-                <div>Questions: {user.questionCount}</div>
-                <div>Answers: {user.answerCount}</div>
+                <div className="name">{user.name}</div>
+                <div className="detail">
+                  <span>created questions:</span> {user.questionCount}
+                </div>
+                <div className="detail">
+                  <span>answers questions:</span> {user.answerCount}
+                </div>
               </div>
             </div>
           </div>
@@ -43,7 +52,7 @@ const mapState = ({ users, user }) => {
     return {
       id: user.id,
       name: user.name,
-      avatarUrl: user.avatarUrl,
+      avatarUrl: user.avatarURL,
       questionCount,
       answerCount,
       score: questionCount + answerCount,
