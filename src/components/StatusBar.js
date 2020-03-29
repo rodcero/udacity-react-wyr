@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TiUser } from 'react-icons/ti';
 
 import './StatusBar.css';
 import { setUser } from '../actions/user';
@@ -15,10 +14,12 @@ function StatusBar({ user, setUser }) {
     <div className="status-bar">
       {user && (
         <div className="user">
-          <TiUser className="icon" />
+          <div className={`login-avatar ${user.avatarURL}`}></div>
           <div>
             <span className="name">{user.name}</span>
-            <button onClick={signOut}>Logout</button>
+            <button className="login-button" onClick={signOut}>
+              Logout
+            </button>
           </div>
         </div>
       )}

@@ -6,11 +6,19 @@
   height: 45px;
 }
 
-.icon {
-  font-size: 35px;
-  color: #2669bd;
-  border: 2px solid #cccaca;
-  border-radius: 60px;
+.login-avatar {
+  background-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.login-button {
+  background-color: #f2c4d0;
+  border-style: none;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 .user {
@@ -21,7 +29,7 @@
 .user div {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  margin: 5px;
 }
 
 .name {
