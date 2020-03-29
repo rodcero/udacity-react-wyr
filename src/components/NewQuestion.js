@@ -2,20 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as api from '../_DATA';
 import { addQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {
   static propTypes = {
-    prop: PropTypes,
+    user: PropTypes.string.isRequired,
+    addQuestion: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   state = {
     optionOneText: '',
     optionTwoText: '',
   };
-
-  componentDidMount() {}
 
   handleInputChange = (value, option) => {
     this.setState({ [option]: value });
@@ -29,10 +28,6 @@ class NewQuestion extends Component {
   };
 
   render() {
-    const { questions } = this.props;
-
-    if (!questions) return null;
-
     return (
       <>
         <h3>New Question</h3>
@@ -58,6 +53,6 @@ class NewQuestion extends Component {
   }
 }
 
-const mapState = ({ questions, user }) => ({ questions, user });
+const mapState = ({ user }) => ({ user });
 
 export default connect(mapState, { addQuestion })(NewQuestion);
