@@ -1,0 +1,23 @@
+.leaderboard-user {
+  display: flex;
+}
+
+.leaderboard-content {
+  display: flex;
+  flex-direction: row;
+}
+.leaderboard-details {
+}
+.leaderboard-score {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 15px 0 0;
+}
+
+.leaderboard-score span {
+  font-weight: 100;
+}
+
+.leaderboard-score div {
+  font-size: 30px;
+}
