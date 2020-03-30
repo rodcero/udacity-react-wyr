@@ -23,7 +23,7 @@ class PollList extends Component {
 
     return (
       <>
-        <h3>Polls</h3>
+        <h1>Polls</h1>
         <div className="category-bar">
           <span
             className={(viewSwitch ? 'selected' : '') + ' category-btn'}
@@ -51,13 +51,14 @@ class PollList extends Component {
   }
 }
 
-const mapState = ({ questions, user, users }) => {
+const mapState = ({ questions, auth, users }) => {
+  const user = users[auth.userId];
   const questionList =
     questions &&
     Object.keys(questions)
       .map(key => questions[key])
       .sort((a, b) => b.timestamp - a.timestamp);
-  return { questions: questionList, user: users && users[user] };
+  return { questions: questionList, user };
 };
 
 export default connect(mapState)(PollList);

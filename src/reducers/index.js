@@ -3,11 +3,11 @@ import { loadingBarReducer } from 'react-redux-loading-bar';
 
 import users from './users';
 import questions from './questions';
-import user from './user';
+import auth from './auth';
 
 export default combineReducers({
   users,
   questions,
-  user,
+  auth,
   loadingBar: loadingBarReducer,
 });

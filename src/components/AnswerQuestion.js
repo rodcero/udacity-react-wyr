@@ -7,7 +7,7 @@ import { answerQuestion } from '../actions/questions';
 class AnswerQuestion extends Component {
   static propTypes = {
     question: PropTypes.object.isRequired,
-    user: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
   };
 
   state = {
@@ -19,7 +19,7 @@ class AnswerQuestion extends Component {
     this.props.answerQuestion(
       this.props.question.id,
       this.state.selected,
-      this.props.user
+      this.props.userId
     );
   };
 
@@ -51,6 +51,9 @@ class AnswerQuestion extends Component {
   }
 }
 
-const mapState = ({ user }, { question }) => ({ user, question });
+const mapState = ({ auth }, { question }) => ({
+  userId: auth.userId,
+  question,
+});
 
 export default connect(mapState, { answerQuestion })(AnswerQuestion);

@@ -7,7 +7,7 @@ import './NewQuestion.css';
 
 class NewQuestion extends Component {
   static propTypes = {
-    user: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
     addQuestion: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
   };
@@ -23,8 +23,8 @@ class NewQuestion extends Component {
 
   handleAdd = () => {
     const { optionOneText, optionTwoText } = this.state;
-    const { user } = this.props;
-    this.props.addQuestion({ optionOneText, optionTwoText, author: user });
+    const { userId } = this.props;
+    this.props.addQuestion({ optionOneText, optionTwoText, author: userId });
     this.props.history.push('/');
   };
 
@@ -58,6 +58,6 @@ class NewQuestion extends Component {
   }
 }
 
-const mapState = ({ user }) => ({ user });
+const mapState = ({ auth }) => ({ userId: auth.userId });
 
 export default connect(mapState, { addQuestion })(NewQuestion);

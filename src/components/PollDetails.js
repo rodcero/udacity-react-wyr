@@ -57,10 +57,10 @@ class PollDetails extends Component {
   }
 }
 
-const mapState = ({ questions, user, users }, props) => {
+const mapState = ({ questions, auth, users }, props) => {
   const { question_id } = props.match.params;
   const question = questions[question_id];
-  return { question, user: users[user] };
+  return { question, user: users[auth.userId] };
 };
 
 export default connect(mapState)(PollDetails);

@@ -1,6 +1,6 @@
 export const SET_USER = 'SET_USER';
 
-export const setUser = user => ({
+export const setUser = userId => ({
   type: SET_USER,
-  user,
+  userId,
 });

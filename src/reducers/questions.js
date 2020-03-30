@@ -9,7 +9,6 @@ export default (state = null, action) => {
     case RECEIVE_QUESTIONS:
       return { ...action.questions };
     case ANSWER_QUESTION:
-      console.log(state[action.questionId][action.answer]);
       return {
         ...state,
         [action.questionId]: {

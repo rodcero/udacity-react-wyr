@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import './StatusBar.css';
-import { setUser } from '../actions/user';
+import { setUser } from '../actions/auth';
 
 function StatusBar({ user, setUser }) {
   const signOut = e => {
@@ -27,9 +27,9 @@ function StatusBar({ user, setUser }) {
   );
 }
 
-const mapState = ({ user, users }) => {
+const mapState = ({ auth, users }) => {
   return {
-    user: users ? users[user] : null,
+    user: users ? users[auth.userId] : null,
   };
 };
 
