@@ -1,34 +1,38 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './PollItem.css';
 
-const PollItem = ({ poll, show, answer }) => {
+const PollItem = ({ poll, user }) => {
   return (
-    <Link
-      className="pollitem"
-      to={`/questions/${poll.id}`}
-      style={{ display: show ? 'block' : 'none' }}
-    >
-      <h5>{poll.author}</h5>
-      <p>{new Date(poll.timestamp).toLocaleDateString('en-US')}</p>
-      <ul>
-        <li className={answer === 'optionOne' ? 'answer' : ''}>
-          {poll.optionOne.text}
-        </li>
-        <li className={answer === 'optionTwo' ? 'answer' : ''}>
-          {poll.optionTwo.text}
-        </li>
-      </ul>
+    <Link className="pollitem" to={`/questions/${poll.id}`}>
+      <div className={`avatar ${user.avatarURL}`}></div>
+      <div class="content">
+        <div class="author">{user.name}</div>
+        <div class="sub">
+          Created on: {new Date(poll.timestamp).toLocaleDateString('en-US')}
+        </div>
+        <div className="options">
+          <div className="or">OR</div>
+          <div>
+            <div className="option">{poll.optionOne.text}</div>
+            <div className="option">{poll.optionTwo.text}</div>
+          </div>
+        </div>
+      </div>
     </Link>
   );
 };
 
 PollItem.propTypes = {
+  user: PropTypes.object.isRequired,
   poll: PropTypes.object.isRequired,
-  show: PropTypes.bool.isRequired,
-  answer: PropTypes.string,
 };
 
-export default PollItem;
+const mapState = ({ users }, { poll }) => {
+  return { user: users[poll.author] };
+};
+
+export default connect(mapState)(PollItem);

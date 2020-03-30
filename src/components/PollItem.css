@@ -1,14 +1,49 @@
 .pollitem {
-  color: black;
+  color: #343434;
   text-decoration: none;
-  border: 2px solid gray;
-  margin: 10px;
+  margin: 10px 0;
   padding: 20px;
-  border-radius: 30px;
+  border-radius: 20px;
+  display: flex;
+}
+
+.pollitem .content {
+  margin: 0 20px;
+}
+.pollitem .author {
+  color: #77c7d9;
+  font-weight: 900;
+  font-size: 20px;
+}
+.pollitem .sub {
+  font-weight: 100;
+  font-size: 12px;
+}
+
+.pollitem .options {
+  display: flex;
+  margin-top: 5px;
+}
+
+.pollitem .options .or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  padding: 5px 10px;
+  border-right: 1px solid #77c7d9;
+}
+
+.pollitem .options .option {
+  margin: 0 10px;
+}
+
+.pollitem .options ul {
+  display: flex;
 }
 
 .pollitem:hover {
-  background-color: lightgray;
+  background-color: #f2e0c9;
 }
 
 .answer {

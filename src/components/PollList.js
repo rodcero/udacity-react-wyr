@@ -19,46 +19,42 @@ class PollList extends Component {
     const { questions, user } = this.props;
     const { viewSwitch } = this.state;
 
-    if (!questions || !user) return null;
+    if (!questions) return null;
 
     return (
       <>
         <h1>Polls</h1>
         <div className="category-bar">
           <span
-            className={(viewSwitch ? 'selected' : '') + ' category-btn'}
+            className={`category-btn ${viewSwitch ? 'selected' : ''}`}
             onClick={() => this.setState({ viewSwitch: true })}
           >
             Unanswered
           </span>
           <span
-            className={(!viewSwitch ? 'selected' : '') + ' category-btn'}
+            className={`category-btn ${!viewSwitch ? 'selected' : ''}`}
             onClick={() => this.setState({ viewSwitch: false })}
           >
             Answered
           </span>
         </div>
-        {questions.map(question => (
-          <PollItem
-            show={!user.answers[question.id] === viewSwitch}
-            answer={user.answers[question.id]}
-            poll={question}
-            key={question.id}
-          />
-        ))}
+        {questions
+          .filter(question => !user.answers[question.id] === viewSwitch)
+          .map(question => (
+            <PollItem poll={question} key={question.id} />
+          ))}
       </>
     );
   }
 }
 
-const mapState = ({ questions, auth, users }) => {
-  const user = users[auth.userId];
-  const questionList =
-    questions &&
-    Object.keys(questions)
+const mapState = ({ questions, users, auth }) => {
+  return {
+    user: users[auth.userId],
+    questions: Object.keys(questions)
       .map(key => questions[key])
-      .sort((a, b) => b.timestamp - a.timestamp);
-  return { questions: questionList, user };
+      .sort((a, b) => b.timestamp - a.timestamp),
+  };
 };
 
 export default connect(mapState)(PollList);
