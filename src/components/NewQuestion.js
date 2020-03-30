@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { addQuestion } from '../actions/questions';
+import './NewQuestion.css';
 
 class NewQuestion extends Component {
   static propTypes = {
@@ -29,26 +30,30 @@ class NewQuestion extends Component {
 
   render() {
     return (
-      <>
-        <h3>New Question</h3>
-        <h5>Would You Rather</h5>
+      <div className="new-question">
+        <div className="message">Create new question.</div>
+        <div className="title">Would You Rather...</div>
         <div>
-          <input
+          <textarea
+            className="input"
             value={this.state.optionOneText}
             onChange={e =>
               this.handleInputChange(e.target.value, 'optionOneText')
             }
-          ></input>
-          <div>or</div>
-          <input
+          ></textarea>
+          <div className="or">or</div>
+          <textarea
+            className="input"
             value={this.state.optionTwoText}
             onChange={e =>
               this.handleInputChange(e.target.value, 'optionTwoText')
             }
-          ></input>
+          ></textarea>
         </div>
-        <button onClick={this.handleAdd}>Add</button>
-      </>
+        <button className="button" onClick={this.handleAdd}>
+          Create
+        </button>
+      </div>
     );
   }
 }

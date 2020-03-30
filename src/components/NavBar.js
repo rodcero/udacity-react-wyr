@@ -6,14 +6,17 @@ import './NavBar.css';
 function NavBar({ location }) {
   return (
     <div className="navbar">
-      <Link className={location.pathname === '/' && 'selected'} to="/">
+      <Link className={location.pathname === '/' ? 'selected' : ''} to="/">
         HOME
       </Link>
-      <Link className={location.pathname === '/add' && 'selected'} to="/add">
+      <Link
+        className={location.pathname === '/add' ? 'selected' : ''}
+        to="/add"
+      >
         NEW QUESTION
       </Link>
       <Link
-        className={location.pathname === '/leaderboard' && 'selected'}
+        className={location.pathname === '/leaderboard' ? 'selected' : ''}
         to="/leaderboard"
       >
         LEADERBOARD

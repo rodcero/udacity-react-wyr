@@ -1,0 +1,28 @@
+.new-question > .title {
+  font-size: 29px;
+  font-weight: 900;
+  color: #1eb2d4;
+  margin: 5px 0 30px 0;
+}
+
+.new-question > .message {
+  font-weight: 300;
+  margin-top: 30px;
+  color: gray;
+}
+
+.new-question .input {
+  width: 400px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #77c7d9;
+}
+
+.new-question .or {
+  width: 400px;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  font-weight: 900;
+  color: #1eb2d4;
+}
