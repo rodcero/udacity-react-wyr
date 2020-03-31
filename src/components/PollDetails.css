@@ -2,7 +2,14 @@
   display: flex;
 }
 
+.poll-details > .poll-detail {
+  text-align: center;
+}
+
 .poll-content {
+  border-left: 1px solid #c5c5c5;
+  padding: 0px 15px;
+  margin: 5px 15px;
 }
 
 .poll-question {

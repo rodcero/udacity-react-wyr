@@ -9,9 +9,9 @@ const PollItem = ({ poll, user }) => {
   return (
     <Link className="pollitem" to={`/questions/${poll.id}`}>
       <div className={`avatar ${user.avatarURL}`}></div>
-      <div class="content">
-        <div class="author">{user.name}</div>
-        <div class="sub">
+      <div className="content">
+        <div className="author">{user.name}</div>
+        <div className="sub">
           Created on: {new Date(poll.timestamp).toLocaleDateString('en-US')}
         </div>
         <div className="options">

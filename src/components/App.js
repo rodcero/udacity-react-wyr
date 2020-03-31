@@ -26,7 +26,7 @@ class App extends Component {
         <StatusBar />
         <NavBar />
         <div className="container">
-          {(this.props.user !== null) & (this.props.questions !== null) ? (
+          {(this.props.userId !== null) & (this.props.questions !== null) ? (
             <>
               <Route path="/" exact component={PollList} />
               <Route path="/add" component={NewQuestion} />
@@ -42,8 +42,9 @@ class App extends Component {
   }
 }
 
-const mapState = props => {
-  return props;
+const mapState = ({ auth, questions }) => {
+  const { userId } = auth;
+  return { userId, questions };
 };
 
 export default connect(mapState, {

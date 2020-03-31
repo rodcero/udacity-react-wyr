@@ -4,54 +4,45 @@ import { connect } from 'react-redux';
 
 import './PollDetails.css';
 import AnswerQuestion from './AnswerQuestion';
+import Answer from './Answer';
 
 class PollDetails extends Component {
   static propTypes = {
     question: PropTypes.object,
     user: PropTypes.object,
+    author: PropTypes.object.isRequired,
   };
 
   render() {
-    const { question, user } = this.props;
+    const { question, user, author } = this.props;
 
     if (!question || !user) return <div>Error 404</div>;
 
     const answer = user.answers[question.id];
 
-    const total =
-      question.optionOne.votes.length + question.optionTwo.votes.length;
-
-    const format = option => {
-      const count = question[option].votes.length;
-      return `${(count / total) * 100}%  ${count} out of ${total}`;
-    };
-
     return (
       <>
-        <h2>Would You Rather</h2>
+        <div className="message">
+          {!answer ? 'Please answer' : 'You answered'}
+        </div>
+        <div className="title">Would You Rather</div>
         <div className="poll-details">
-          <div className="picture">Picture</div>
+          <div className="poll-detail">
+            <div className={`avatar ${author.avatarURL}`}></div>
+            <div className="author">Asked by: {author.name}</div>
+            <div className="sub">
+              Created on:
+              {new Date(question.timestamp).toLocaleDateString('en-US')}
+            </div>
+          </div>
           <div className="poll-content">
             {!answer ? (
               <AnswerQuestion question={question} />
             ) : (
-              <>
-                {['optionOne', 'optionTwo'].map((option, key) => (
-                  <div
-                    key={key}
-                    className="poll-question"
-                    style={{ color: answer === option ? 'red' : '' }}
-                  >
-                    <div>{question[option].text}</div>
-                    <div>{format(option)}</div>
-                  </div>
-                ))}
-              </>
+              <Answer question={question} answer={answer} />
             )}
           </div>
         </div>
-        <div>Author: {question.author}</div>
-        <div>Created on:{question.timestamp}</div>
       </>
     );
   }
@@ -60,7 +51,7 @@ class PollDetails extends Component {
 const mapState = ({ questions, auth, users }, props) => {
   const { question_id } = props.match.params;
   const question = questions[question_id];
-  return { question, user: users[auth.userId] };
+  return { question, user: users[auth.userId], author: users[question.author] };
 };
 
 export default connect(mapState)(PollDetails);

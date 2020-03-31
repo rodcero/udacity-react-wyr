@@ -19,7 +19,7 @@ class PollList extends Component {
     const { questions, user } = this.props;
     const { viewSwitch } = this.state;
 
-    if (!questions) return null;
+    if (!questions || !user) return null;
 
     return (
       <>
