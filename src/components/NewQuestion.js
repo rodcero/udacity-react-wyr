@@ -58,7 +58,7 @@ class NewQuestion extends Component {
           disabled={this.disableButton()}
           onClick={this.handleAdd}
         >
-          Create
+          CREATE
         </button>
       </div>
     );

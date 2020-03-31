@@ -48,11 +48,13 @@ class AnswerQuestion extends Component {
             />
             {question.optionTwo.text}
           </div>
-          <input
+          <button
             disabled={this.disableButton()}
             className="button"
             type="submit"
-          ></input>
+          >
+            SELECT
+          </button>
         </form>
       </>
     );
