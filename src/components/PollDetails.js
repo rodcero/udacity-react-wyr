@@ -5,18 +5,19 @@ import { connect } from 'react-redux';
 import './PollDetails.css';
 import AnswerQuestion from './AnswerQuestion';
 import Answer from './Answer';
+import Error from './Error';
 
 class PollDetails extends Component {
   static propTypes = {
     question: PropTypes.object,
     user: PropTypes.object,
-    author: PropTypes.object.isRequired,
+    author: PropTypes.object,
   };
 
   render() {
     const { question, user, author } = this.props;
 
-    if (!question || !user) return <div>Error 404</div>;
+    if (!question || !user) return <Error message="404" />;
 
     const answer = user.answers[question.id];
 
@@ -49,9 +50,14 @@ class PollDetails extends Component {
 }
 
 const mapState = ({ questions, auth, users }, props) => {
+  console.log(questions, auth, users, props);
   const { question_id } = props.match.params;
   const question = questions[question_id];
-  return { question, user: users[auth.userId], author: users[question.author] };
+  return {
+    question,
+    user: users[auth.userId],
+    author: question && users[question.author],
+  };
 };
 
 export default connect(mapState)(PollDetails);
