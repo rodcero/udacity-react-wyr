@@ -25,6 +25,10 @@ html {
   margin-top: 10px;
 }
 
+.button:disabled {
+  background-color: #cecece;
+}
+
 .avatar {
   background-size: cover;
   background-size: 70px;

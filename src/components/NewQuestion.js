@@ -28,6 +28,10 @@ class NewQuestion extends Component {
     this.props.history.push('/');
   };
 
+  disableButton = () => {
+    return this.state.optionOneText === '' || this.state.optionTwoText === '';
+  };
+
   render() {
     return (
       <div className="new-question">
@@ -50,7 +54,11 @@ class NewQuestion extends Component {
             }
           ></textarea>
         </div>
-        <button className="button" onClick={this.handleAdd}>
+        <button
+          className="button"
+          disabled={this.disableButton()}
+          onClick={this.handleAdd}
+        >
           Create
         </button>
       </div>
