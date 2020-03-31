@@ -24,6 +24,8 @@ class AnswerQuestion extends Component {
     );
   };
 
+  disableButton = () => this.state.selected === null;
+
   render() {
     const { question } = this.props;
     return (
@@ -46,7 +48,11 @@ class AnswerQuestion extends Component {
             />
             {question.optionTwo.text}
           </div>
-          <input className="button" type="submit"></input>
+          <input
+            disabled={this.disableButton()}
+            className="button"
+            type="submit"
+          ></input>
         </form>
       </>
     );

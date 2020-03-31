@@ -28,9 +28,8 @@ class NewQuestion extends Component {
     this.props.history.push('/');
   };
 
-  disableButton = () => {
-    return this.state.optionOneText === '' || this.state.optionTwoText === '';
-  };
+  disableButton = () =>
+    this.state.optionOneText === '' || this.state.optionTwoText === '';
 
   render() {
     return (
