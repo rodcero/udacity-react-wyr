@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { answerQuestion } from '../actions/questions';
+import './AnswerQuestion.css';
 
 class AnswerQuestion extends Component {
   static propTypes = {
@@ -36,6 +37,7 @@ class AnswerQuestion extends Component {
             />
             {question.optionOne.text}
           </div>
+          <b>or</b>
           <div className="poll-question">
             <input
               type="radio"
@@ -44,7 +46,7 @@ class AnswerQuestion extends Component {
             />
             {question.optionTwo.text}
           </div>
-          <input type="submit"></input>
+          <input className="button" type="submit"></input>
         </form>
       </>
     );

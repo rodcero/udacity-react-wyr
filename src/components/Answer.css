@@ -1,0 +1,13 @@
+.choice {
+  border-left: solid #77c7d9 5px;
+  padding: 0 10px;
+  font-weight: 800;
+}
+
+.question {
+  padding: 10px;
+}
+
+.question .stats {
+  color: #847b7d;
+}
