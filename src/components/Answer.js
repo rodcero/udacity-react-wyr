@@ -8,7 +8,7 @@ function Answer({ question, answer }) {
     question.optionOne.votes.length + question.optionTwo.votes.length;
   const format = option => {
     const count = question[option].votes.length;
-    return `${(count / total) * 100}% :: ${count} out of ${total}`;
+    return `${Math.floor((count / total) * 100)}% :: ${count} out of ${total}`;
   };
 
   return (
