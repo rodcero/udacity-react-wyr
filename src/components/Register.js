@@ -31,7 +31,7 @@ class Register extends Component {
     };
     this.props
       .addUser(user)
-      .then(user => {
+      .then(() => {
         this.props.history.push('/');
       })
       .catch(e => {

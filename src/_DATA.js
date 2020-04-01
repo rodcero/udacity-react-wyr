@@ -2,6 +2,8 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
+    password:
+      '62f264d7ad826f02a8af714c0a54b197935b717656b80461686d450f7b3abde4c553541515de2052b9af70f710f0cd8a1a2d3f4d60aa72608d71a63a9a93c0f5',
     avatarURL: 'avatar-2',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
@@ -14,6 +16,8 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
+    password:
+      '62f264d7ad826f02a8af714c0a54b197935b717656b80461686d450f7b3abde4c553541515de2052b9af70f710f0cd8a1a2d3f4d60aa72608d71a63a9a93c0f5',
     avatarURL: 'avatar-1',
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
@@ -24,6 +28,8 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
+    password:
+      '62f264d7ad826f02a8af714c0a54b197935b717656b80461686d450f7b3abde4c553541515de2052b9af70f710f0cd8a1a2d3f4d60aa72608d71a63a9a93c0f5',
     avatarURL: 'avatar-3',
     answers: {
       xj352vofupe1dqz9emx13r: 'optionOne',
