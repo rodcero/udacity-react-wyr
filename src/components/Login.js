@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { setUser } from '../actions/auth';
+import './Login.css';
 
 class Login extends Component {
   render() {
     const { users } = this.props;
     return (
       <>
-        <h2>Log in</h2>
+        <h3>Login</h3>
+        <div className="login">
+          <input></input>
+          <input></input>
+          <button className="button">SIGN IN</button>
+          <Link className="register-link" to="/register">
+            Register
+          </Link>
+        </div>
+        <div className="or">OR</div>
+        <h3>Impersonate</h3>
         {users && (
           <select onChange={e => this.props.setUser(e.target.value)}>
             <option></option>

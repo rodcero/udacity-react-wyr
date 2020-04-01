@@ -23,6 +23,7 @@ html {
   font-weight: 900;
   border-radius: 5px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .button:disabled {

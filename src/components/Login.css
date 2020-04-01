@@ -1,0 +1,19 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.login > input {
+  margin: 5px 0;
+  padding: 3px;
+}
+
+.or {
+  width: 250px;
+  padding: 20px;
+}
+
+.register-link {
+  padding: 5px 0;
+}

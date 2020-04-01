@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import Login from './Login';
@@ -10,13 +10,14 @@ import StatusBar from './StatusBar';
 import NavBar from './NavBar';
 import PollList from './PollList';
 import Leaderboard from './Leaderboard';
-import { handleReceiveUsers } from '../actions/users';
+import Register from './Register';
+import { receiveUsers } from '../actions/users';
 import { receiveQuestions } from '../actions/questions';
 import PollDetails from './PollDetails';
 
 class App extends Component {
   componentDidMount() {
-    this.props.handleReceiveUsers();
+    this.props.receiveUsers();
     this.props.receiveQuestions();
   }
   render() {
@@ -34,7 +35,10 @@ class App extends Component {
               <Route path="/questions/:question_id" component={PollDetails} />
             </>
           ) : (
-            <Login />
+            <Switch>
+              <Route path="/register" exact component={Register} />
+              <Route path="/" component={Login} />
+            </Switch>
           )}
         </div>
       </Router>
@@ -48,6 +52,6 @@ const mapState = ({ auth, questions }) => {
 };
 
 export default connect(mapState, {
-  handleReceiveUsers,
+  receiveUsers,
   receiveQuestions,
 })(App);

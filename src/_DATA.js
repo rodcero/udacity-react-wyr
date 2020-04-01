@@ -154,6 +154,32 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
   };
 }
 
+export function _saveUser({ name, id, password, avatarURL }) {
+  return new Promise((res, rej) => {
+    const user = {
+      name,
+      id,
+      password,
+      avatarURL,
+      answers: {},
+      questions: [],
+    };
+
+    if (users[id]) {
+      rej('user id taken');
+    }
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [user.id]: user,
+      };
+
+      res(user);
+    }, 1000);
+  });
+}
+
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
