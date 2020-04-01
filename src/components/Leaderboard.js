@@ -1,32 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import './Leaderboard.css';
 import LeaderboardItem from './LeaderboardItem';
 
-class Leaderboard extends Component {
-  static propTypes = {
-    users: PropTypes.array.isRequired,
-    authedUserId: PropTypes.string.isRequired,
-  };
-
-  render() {
-    const { authedUserId } = this.props;
-    return (
-      <div>
-        <h1>Leaderboard</h1>
-        {this.props.users.map(user => (
-          <LeaderboardItem
-            user={user}
-            isCurrentUser={authedUserId === user.id}
-            key={user.id}
-          />
-        ))}
-      </div>
-    );
-  }
+function Leaderboard({ users, authedUserId }) {
+  return (
+    <div>
+      <h1>Leaderboard</h1>
+      {users.map(user => (
+        <LeaderboardItem
+          user={user}
+          isCurrentUser={authedUserId === user.id}
+          key={user.id}
+        />
+      ))}
+    </div>
+  );
 }
+
+Leaderboard.propTypes = {
+  users: PropTypes.array.isRequired,
+  authedUserId: PropTypes.string.isRequired,
+};
 
 const mapState = ({ users, auth }) => {
   const userList = Object.keys(users).map(userId => {

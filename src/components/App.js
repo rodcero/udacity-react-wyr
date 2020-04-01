@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './App.css';
 import Login from './Login';
@@ -16,6 +17,11 @@ import { receiveQuestions } from '../actions/questions';
 import PollDetails from './PollDetails';
 
 class App extends Component {
+  static propTypes = {
+    receiveQuestions: PropTypes.func.isRequired,
+    receiveUsers: PropTypes.func.isRequired,
+  };
+
   componentDidMount() {
     this.props.receiveUsers();
     this.props.receiveQuestions();

@@ -21,7 +21,7 @@ export const addQuestion = data => {
   };
 };
 
-export const _answerQuestion = (questionId, answer, userId) => ({
+const _answerQuestion = (questionId, answer, userId) => ({
   type: ANSWER_QUESTION,
   questionId,
   answer,
