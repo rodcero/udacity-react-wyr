@@ -30,6 +30,15 @@ html {
   background-color: #cecece;
 }
 
+input {
+  border: 1px solid #46bfda;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 8px 15px;
+  text-decoration: none;
+  margin: 4px 2px;
+}
+
 .avatar {
   background-size: cover;
   background-size: 70px;

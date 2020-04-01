@@ -12,14 +12,16 @@ class Login extends Component {
       <>
         <h3>Login</h3>
         <div className="login">
+          <label>Username:</label>
           <input></input>
+          <label>Password:</label>
           <input></input>
           <button className="button">SIGN IN</button>
           <Link className="register-link" to="/register">
             Register
           </Link>
         </div>
-        <div className="or">OR</div>
+        <div className="login-or">OR</div>
         <h3>Impersonate</h3>
         {users && (
           <select onChange={e => this.props.setUser(e.target.value)}>

@@ -35,22 +35,25 @@ class Register extends Component {
         <h1>Register User</h1>
         <div className="register">
           <div>
-            <label for="">Full Name:</label>
+            <label htmlFor="name">Full Name:</label>
             <input
+              id="name"
               value={name}
               onChange={e => this.setState({ name: e.target.value })}
             ></input>
           </div>
           <div>
-            <label for="">User ID:</label>
+            <label htmlFor="id">User ID:</label>
             <input
+              id="id"
               value={id}
               onChange={e => this.setState({ id: e.target.value })}
             ></input>
           </div>
           <div>
-            <label for="">Password:</label>
+            <label htmlFor="password">Password:</label>
             <input
+              id="password"
               type="password"
               value={password}
               onChange={e => this.setState({ password: e.target.value })}
