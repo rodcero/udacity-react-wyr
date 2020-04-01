@@ -39,6 +39,10 @@ input {
   margin: 4px 2px;
 }
 
+.error-small {
+  color: #da5757;
+}
+
 .avatar {
   background-size: cover;
   background-size: 70px;

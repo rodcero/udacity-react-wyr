@@ -17,10 +17,16 @@ const _addUser = user => ({
 export const addUser = user => {
   return dispatch => {
     dispatch(showLoading());
-    return api._saveUser(user).then(resp_user => {
-      dispatch(_addUser(resp_user));
-      dispatch(hideLoading());
-    });
+    return api
+      ._saveUser(user)
+      .then(resp_user => {
+        dispatch(_addUser(resp_user));
+        dispatch(hideLoading());
+      })
+      .catch(e => {
+        dispatch(hideLoading());
+        throw e;
+      });
   };
 };
 

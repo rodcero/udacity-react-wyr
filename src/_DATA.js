@@ -166,7 +166,7 @@ export function _saveUser({ name, id, password, avatarURL }) {
     };
 
     if (users[id]) {
-      rej('user id taken');
+      rej('userid-taken');
     }
 
     setTimeout(() => {

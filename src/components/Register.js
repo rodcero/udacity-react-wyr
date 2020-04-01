@@ -16,19 +16,37 @@ class Register extends Component {
     password: '',
     name: '',
     avatarURL: 'avatar-2',
+    disableRegister: false,
+    error: '',
   };
 
   handleRegister = () => {
-    console.log('REGISTER');
+    const { id, name, password, avatarURL } = this.state;
     const user = {
-      ...this.state,
+      id,
+      name,
+      avatarURL,
+      password: sha3_512(password),
     };
-    user.password = sha3_512(this.state.password);
-    this.props.addUser(user);
+    this.props.addUser(user).catch(e => {
+      let error = 'error please try again.';
+      if (e === 'userid-taken') {
+        error =
+          'User ID is taken, please choose a different one and try again.';
+      }
+      this.setState({ error });
+    });
+  };
+
+  disable = () => {
+    const { disableRegister, id, password, name } = this.state;
+    return (
+      disableRegister || !((id !== '') & (password !== '') & (name !== ''))
+    );
   };
 
   render() {
-    const { id, password, name } = this.state;
+    const { id, password, name, error } = this.state;
 
     return (
       <>
@@ -47,7 +65,7 @@ class Register extends Component {
             <input
               id="id"
               value={id}
-              onChange={e => this.setState({ id: e.target.value })}
+              onChange={e => this.setState({ id: e.target.value, error: '' })}
             ></input>
           </div>
           <div>
@@ -59,7 +77,12 @@ class Register extends Component {
               onChange={e => this.setState({ password: e.target.value })}
             ></input>
           </div>
-          <button className="button" onClick={this.handleRegister}>
+          {error && <div className="error-small">{error}</div>}
+          <button
+            disabled={this.disable()}
+            className="button"
+            onClick={this.handleRegister}
+          >
             REGISTER
           </button>
         </div>
