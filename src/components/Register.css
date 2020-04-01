@@ -8,3 +8,12 @@
   width: 90px;
   padding: 3px;
 }
+.random {
+  cursor: pointer;
+  font-size: 40px;
+  color: #77c7d9;
+}
+
+.random:hover {
+  color: #8df2f2;
+}

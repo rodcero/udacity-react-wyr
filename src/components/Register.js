@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { sha3_512 } from 'js-sha3';
+import { TiRefresh } from 'react-icons/ti';
 
 import { addUser } from '../actions/users';
 import './Register.css';
@@ -28,14 +29,24 @@ class Register extends Component {
       avatarURL,
       password: sha3_512(password),
     };
-    this.props.addUser(user).catch(e => {
-      let error = 'error please try again.';
-      if (e === 'userid-taken') {
-        error =
-          'User ID is taken, please choose a different one and try again.';
-      }
-      this.setState({ error });
-    });
+    this.props
+      .addUser(user)
+      .then(user => {
+        this.props.history.push('/');
+      })
+      .catch(e => {
+        let error = 'error please try again.';
+        if (e === 'userid-taken') {
+          error =
+            'User ID is taken, please choose a different one and try again.';
+        }
+        this.setState({ error });
+      });
+  };
+
+  randomizeAvatar = () => {
+    const rand = Math.floor(Math.random() * 7) + 1;
+    this.setState({ avatarURL: `avatar-${rand}` });
   };
 
   disable = () => {
@@ -46,12 +57,14 @@ class Register extends Component {
   };
 
   render() {
-    const { id, password, name, error } = this.state;
+    const { id, password, name, error, avatarURL } = this.state;
 
     return (
       <>
         <h1>Register User</h1>
         <div className="register">
+          <div className={`avatar ${avatarURL}`}></div>
+          <TiRefresh onClick={this.randomizeAvatar} className="random" />
           <div>
             <label htmlFor="name">Full Name:</label>
             <input

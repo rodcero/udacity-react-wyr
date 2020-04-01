@@ -50,7 +50,6 @@ class PollDetails extends Component {
 }
 
 const mapState = ({ questions, auth, users }, props) => {
-  console.log(questions, auth, users, props);
   const { question_id } = props.match.params;
   const question = questions[question_id];
   return {
