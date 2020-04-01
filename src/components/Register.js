@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { sha3_512 } from 'js-sha3';
-import { TiRefresh } from 'react-icons/ti';
+import { TiRefresh, TiAdjustBrightness } from 'react-icons/ti';
 
 import { addUser } from '../actions/users';
 import './Register.css';
@@ -29,6 +29,7 @@ class Register extends Component {
       avatarURL,
       password: sha3_512(password),
     };
+    this.setState({ disableRegister: true });
     this.props
       .addUser(user)
       .then(() => {
@@ -40,7 +41,7 @@ class Register extends Component {
           error =
             'User ID is taken, please choose a different one and try again.';
         }
-        this.setState({ error });
+        this.setState({ error, disableRegister: false });
       });
   };
 
