@@ -1,5 +1,11 @@
 
 # Would you rather?
+A game developed using React & Redux
+### features
+- Create "Would you rather" questions
+- Keep track of answered and unanswered questions
+- Leaderboard ranking of users
+- Impersonate users
 
 ## Setup
 
@@ -9,5 +15,5 @@
 
 `npm run start`
 
-navigate to localhost:3000
+navigate to http://localhost:3000
 
